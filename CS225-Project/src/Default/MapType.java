@@ -1,19 +1,16 @@
 package Default;
-//import java.math.*;
-import java.util.ArrayList; 
 
 public class MapType {
-	int Number = 5000;
-	int Count;
+	private int Number = 5000;
 		
-	public double[][] plotPoints() {
-		ArrayList<double[]> points = new ArrayList<>();
+	public GenericData[] plotPoints() {
+		GenericData[] points = new GenericData[Number -1];
 		// points[i][j][k]
 		//i = point #
 		//j = V
 		//k = Y
 		
-		Count = 0;
+		int Count = 0;
 		double radius = 1;
 		double a = 4*Math.PI*((radius*radius)/Number);
 		double d = Math.sqrt(a);
@@ -26,35 +23,29 @@ public class MapType {
 			int My = (int) Math.round(2*Math.PI*Math.sin(V)/Dy);
 			for(int j = 0; j < My; j++ ) {
 				double Y = 2*Math.PI*j/My;
-				double[] point = {Count, V, Y};
-				points.add(point);
-				System.out.println("point " + points.get(Count)[0] + " made at: V= " + points.get(Count)[1] + " Y= " + points.get(Count)[2] );
+				double[] point = {V, Y};
+				points[Count].setLocation(point);
+				points[Count].setDv(Dv);
+				points[Count].setDy(Dy);
+				System.out.println("point " + Count + " made at: V= " + points[Count].getLocation()[0] + " Y= " + points[Count].getLocation()[1] );
 				Count++;
 			}	
 		}
-		
-		double[][] finalPoints = new double[points.size()][3];
-		for(int i=0; i < points.size(); i++) {
-			finalPoints[i] = points.get(i);
+		return points;
+	}
+	public void findNeighbors(GenericData[] data, int point) {
+		double V = data[point].getLocation()[0];
+		double Dv = data[point].getDv();
+		double Y = data[point].getLocation()[1];
+		double Dy = data[point].getDy();
+		double Vnew = (Math.round(V*100)/100) + (Math.round(Dv*100)/100);
+		double Ynew = (Math.round(Y*100)/100) + (Math.round(Dy*100)/100);
+		int Count = 0;
+		while(!(data[Count].getLocation()[0] == Vnew)) {
+			Count++;
 		}
-		
-		return finalPoints;
+		//Count is now the neighbor, but this is really inefficent.
+		//INSTEAD, Seperate them by rows, (may have index -1 problems) find point directly above and below
+		// then finding points to the left and right of each of those is easy.
 	}
-
-	public int getNumber() {
-		return Number;
-	}
-
-	public void setNumber(int number) {
-		Number = number;
-	}
-
-	public int getCount() {
-		return Count;
-	}
-
-	public void setCount(int count) {
-		Count = count;
-	}
-	
 }
