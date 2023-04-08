@@ -14,11 +14,8 @@ public class Planet {
 	public void launch() {
 		GenericLayer initialLayer = new GenericLayer();
 		Layers.add(initialLayer);
-		while(timeElapsed < timeDesired) {
-			for(int i=0; i < Layers.size(); i++) {
-				//Layers.get(i).update();
-			}
-			timeElapsed++;
-		}
+		
+		
+		
 	}
 }

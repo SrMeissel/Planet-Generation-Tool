@@ -1,11 +1,14 @@
 package Default;
+
 import java.util.LinkedList;
+import java.util.Arrays; 
 
 //Vector (x,y,m) double
 //height/s (x) double OR int
 
 class GenericData {
 	private double[] location;
+	private int designation;
 	private double Dv;
 	private double Dy;
 	
@@ -16,6 +19,12 @@ class GenericData {
 	
 	LinkedList<GenericMass> Composition = new LinkedList<GenericMass>();
 	
+	public int getDesignation() {
+		return designation;
+	}
+	public void setDesignation(int designation) {
+		this.designation = designation;
+	}
 	public double getDv() {
 		return Dv;
 	}
@@ -29,16 +38,16 @@ class GenericData {
 		Dy = dy;
 	}
 	public double[] getLocation() {
-		return location;
+		return Arrays.copyOf(location, 2);
 	}
 	public void setLocation(double[] location) {
-		this.location = location;
+		this.location = Arrays.copyOf(location, 2);
 	}
 	public double[] getVector() {
-		return Vector;
+		return Arrays.copyOf(Vector, 3);
 	}
 	public void setVector(double[] vector) {
-		Vector = vector;
+		this.Vector = Arrays.copyOf(vector, 3);
 	}
 	public double getGeoHeight() {
 		return GeoHeight;
@@ -64,5 +73,4 @@ class GenericData {
 	public void setComposition(LinkedList<GenericMass> composition) {
 		Composition = composition;
 	}
-	
 }

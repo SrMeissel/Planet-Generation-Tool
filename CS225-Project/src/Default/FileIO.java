@@ -10,9 +10,6 @@ public class FileIO {
 		try {
 			FileWriter fw = new FileWriter(layerTotal);
 			BufferedWriter bw = new BufferedWriter(fw);
-			for(int i = 0; i < Layer.getSurface().length; i++) {
-				
-			}
 			bw.write("");
 			bw.newLine();
 		} catch(Exception e) {
