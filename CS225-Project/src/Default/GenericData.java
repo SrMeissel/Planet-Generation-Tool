@@ -1,16 +1,40 @@
+//*********************************************************
+//Class: GenericData
+//Author: Ethan Mizer
+//Created: 3/31/23
+//Modified: 4/8/23
+//
+//Purpose: Provides optimal way to access data that is stored on each point. better than having a array of excessive dimensions
+//			
+//
+//Attributes: 
+//			location
+//			designation
+//			Dv
+//			Dy
+//			Vector
+//			GeoHeight
+//			TempHeight
+//			ClassHeight
+//			Composition
+//
+//Methods: 
+//		   Getters and Setters
+//		   
+//
+//*********************************************************
 package Default;
 
 import java.util.LinkedList;
 import java.util.Arrays; 
 
-//Vector (x,y,m) double
+
 //height/s (x) double OR int
 
 class GenericData {
 	private double[] location;
+	
 	private int designation;
-	private double Dv;
-	private double Dy;
 	
 	private double[] Vector = new double[3];
 	private double GeoHeight;
@@ -24,18 +48,6 @@ class GenericData {
 	}
 	public void setDesignation(int designation) {
 		this.designation = designation;
-	}
-	public double getDv() {
-		return Dv;
-	}
-	public void setDv(double dv) {
-		Dv = dv;
-	}
-	public double getDy() {
-		return Dy;
-	}
-	public void setDy(double dy) {
-		Dy = dy;
 	}
 	public double[] getLocation() {
 		return Arrays.copyOf(location, 2);
@@ -67,6 +79,7 @@ class GenericData {
 	public void setClassHeight(int classHeight) {
 		ClassHeight = classHeight;
 	}
+	// Make copies of array before returning 
 	public LinkedList<GenericMass> getComposition() {
 		return Composition;
 	}

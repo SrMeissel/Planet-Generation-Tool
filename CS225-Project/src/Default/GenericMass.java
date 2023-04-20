@@ -8,5 +8,5 @@ class  GenericMass {
 	}
 	public void Phase() {
 		
-	}
+	} 
 }
